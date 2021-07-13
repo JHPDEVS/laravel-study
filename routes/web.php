@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GitHubAuth;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +44,6 @@ Route::get('/posts/show/{id}',[PostsController::class,'show'])->name('posts.show
 Route::get('/posts/{post}',[PostsController::class,'edit'])->name('posts.edit');
 Route::put('/posts/{id}',[PostsController::class,'update'])->name('posts.update');
 Route::delete('/posts/{id}',[PostsController::class,'destroy'])->name('posts.delete');
+Route::get('/github/login',[GitHubAuth::class,'redirect'])->name('github.login');
+Route::get('/github/callback',[GitHubAuth::class,'callback']);
 require __DIR__.'/auth.php';
